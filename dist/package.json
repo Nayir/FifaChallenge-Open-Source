@@ -1,0 +1,10 @@
+{
+  "name": "fifachallenge",
+  "version": "1.0.0",
+  "description": "A Vuejs Open Source Project for Esport FIFA",
+  "author": "Nayir CHAMI <nayir.chami@gmail.com>",
+  "private": true,
+  "scripts": {
+   "postinstall": "npm install express"
+ }
+}
