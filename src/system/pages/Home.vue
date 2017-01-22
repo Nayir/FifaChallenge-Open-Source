@@ -1,7 +1,12 @@
 <template>
   <div class="home-background">
     <header-fifachallenge></header-fifachallenge>
-    <h1 class="uk-heading-primary uk-text-center uk-light" style="position: absolute; left: 25%; top: 25%;"> Prêt à relever le Challenge ?</h1>
+    <div id="hero" class="uk-container uk-text-center">
+      <h1 class="uk-heading-primary uk-text-center uk-light uk-margin-large-bottom"> Prêt à relever le Challenge ?</h1>
+      <button class="uk-button uk-button-primary">Inscription</button>
+      <button class="uk-button uk-button-secondary">Connexion</button>
+    </div>
+
     <div class="waves">
       <img class="dot" src="~assets/images/home-wave-a.svg"  />
       <img class="dot" src="~assets/images/home-wave-b.svg"  />
@@ -122,13 +127,16 @@ export default {
 </script>
 
 <style scoped>
+  #hero {
+    margin-top: 100px;
+  }
   main {
     position: absolute;
     background-color: #fff;
     z-index: 2;
     width: 100%;
     min-height: 500px;
-    margin-top: -100px;
+    margin-top: -300px;
   }
   #main_content {
     margin-top: 200px;
