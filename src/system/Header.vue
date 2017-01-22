@@ -24,7 +24,11 @@
         <div class="uk-navbar-center">
 
             <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="/">LOGO</a></li>
+              <li class="uk-active">
+                <a href="/">
+                  <img id="logo" src="~assets/images/fifachallenge_logo.svg"/>
+                </a>
+              </li>
             </ul>
 
         </div>
@@ -59,5 +63,7 @@ export default {
 </script>
 
 <style scoped>
-
+  #logo {
+    height: 50px;
+  }
 </style>
