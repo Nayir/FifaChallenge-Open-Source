@@ -1,6 +1,7 @@
 <template>
   <div class="home-background">
     <header-fifachallenge></header-fifachallenge>
+    <h1 class="uk-heading-primary uk-text-center uk-light" style="position: absolute; left: 25%; top: 25%;"> Prêt à relever le Challenge ?</h1>
     <div class="waves">
       <img class="dot" src="~assets/images/home-wave-a.svg"  />
       <img class="dot" src="~assets/images/home-wave-b.svg"  />
@@ -10,7 +11,46 @@
       <img class="controller controller-x" src="~assets/images/xbox-controller.png"/>
     </div>
     <main>
-
+      <div id="main_content" class="uk-container">
+        <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+                  <h3 class="uk-card-title">Left</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+                  <h3 class="uk-card-title">Right</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+                  <h3 class="uk-card-title">Left</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+                  <h3 class="uk-card-title">Right</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+                  <h3 class="uk-card-title">Left</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+                  <h3 class="uk-card-title">Right</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -89,6 +129,10 @@ export default {
     width: 100%;
     min-height: 500px;
     margin-top: -100px;
+  }
+  #main_content {
+    margin-top: 200px;
+    margin-bottom: 100px;
   }
   .home-background {
     background-color: #2980B9;
