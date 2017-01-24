@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav :class="[navbarclass, navbarcontainer, light]" uk-navbar>
+    <nav class="uk-navbar-container background-primary uk-light" uk-navbar>
 
         <div class="uk-navbar-left">
             <a href="#offcanvas-slide" class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle></a>
@@ -87,16 +87,7 @@
 
 <script>
 export default {
-  name: 'header',
-  props: [
-    'navbarclass'
-  ],
-  data () {
-    return {
-      navbarcontainer: 'uk-navbar-container',
-      light: 'uk-light'
-    }
-  }
+  name: 'header'
 }
 </script>
 

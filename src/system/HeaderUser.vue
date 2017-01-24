@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav :class="[navbarclass, navbarcontainer, light]" uk-navbar>
+    <nav class="uk-navbar-container background-primary uk-light" uk-navbar>
 
         <div class="uk-navbar-left">
             <a href="#offcanvas-slide" class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle></a>
@@ -30,6 +30,7 @@
                             <li><a href="#">Groupe Facebook</a></li>
                         </ul>
                       </li>
+                      <li><a title="Logout" v-on:click="signOut()">Se déconnecter</a></li>
                     </ul>
 
                 </div>
@@ -77,6 +78,7 @@
                         </ul>
                     </div>
                 </li>
+                <li><a title="Logout" v-on:click="signOut()">Se déconnecter</a></li>
             </ul>
 
         </div>
@@ -86,15 +88,17 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
   name: 'header',
-  props: [
-    'navbarclass'
-  ],
-  data () {
-    return {
-      navbarcontainer: 'uk-navbar-container',
-      light: 'uk-light'
+  methods: {
+    signOut () {
+      var self = this
+      firebase.auth().signOut().then(function () {
+        self.$router.push({name: 'user.login'})
+      }, function (error) {
+        console.log(error)
+      })
     }
   }
 }

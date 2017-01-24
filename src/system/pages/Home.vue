@@ -1,10 +1,10 @@
 <template>
   <div class="home-background">
-    <header-fifachallenge></header-fifachallenge>
+    <header-fifachallenge navbarclass="uk-navbar-transparent"></header-fifachallenge>
     <div id="hero" class="uk-container uk-text-center">
       <h1 class="uk-heading-primary uk-text-center uk-light uk-margin-large-bottom"> Prêt à relever le Challenge ?</h1>
-      <button class="uk-button uk-button-primary">Inscription</button>
-      <button class="uk-button uk-button-secondary">Connexion</button>
+      <a href="/user/registration" class="uk-button uk-button-primary">Inscription</a>
+      <a href="/user/login" class="uk-button uk-button-secondary">Connexion</a>
     </div>
 
     <div class="waves">

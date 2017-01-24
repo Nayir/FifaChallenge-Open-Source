@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <home></home>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,4 +17,8 @@ export default {
 
 <style>
 @import url('./assets/css/uikit.fifachallenge.css');
+
+.background-primary {
+  background-color: #3498DB!important;
+}
 </style>
