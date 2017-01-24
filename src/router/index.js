@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-// authentification routes
 import {authentificationRoutes} from '../system/authentification/app/routes.js'
 
 export default new Router({
@@ -23,7 +22,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/'
+      component: require('../system/pages/Home.vue')
     }
   ]
 })

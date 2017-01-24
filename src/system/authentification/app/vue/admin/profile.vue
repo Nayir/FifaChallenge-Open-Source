@@ -3,10 +3,18 @@
     <div>
       <div class="uk-container">
         <ul class="uk-flex-center uk-margin-large-top" uk-tab>
-            <li class="uk-active"><a href="#">Profil</a></li>
-            <li><a href="#">Matchs</a></li>
-            <li><a href="#">Tournois</a></li>
-            <li><a href="#">Paramètres</a></li>
+            <router-link tag="li" :to="{ name: 'user.profile' }">
+              <a> Profile </a>
+            </router-link>
+            <router-link tag="li" :to="{ name: user.profile }">
+              <a> Profile </a>
+            </router-link>
+            <router-link tag="li" :to="{ name: user.profile }">
+              <a> Profile </a>
+            </router-link>
+            <router-link tag="li" :to="{ name: 'user.settings' }">
+              <a> Paramètres </a>
+            </router-link>
         </ul>
         <div>
           <div uk-alert>
@@ -20,7 +28,7 @@
                   <div class="uk-width-1-2@m">
                     <img class="uk-border-circle" width="100" height="100" :src="user.photoURL">
                   </div>
-                  <div class="uk-width-1-2@m league uk-text-left uk-margin-top">
+                  <div class="uk-width-1-2@m league uk-text-left">
                     <h4>FifaChallenge League</h4>
                     <p>DIVISION 3 </p>
                   </div>
@@ -121,6 +129,10 @@ export default {
 </script>
 
 <style scoped>
+
+.league {
+  margin-top: 30px;
+}
 
 .league h4 {
   margin-bottom: 0;

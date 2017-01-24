@@ -2,10 +2,18 @@
   <div>
     <div class="uk-container">
       <ul class="uk-flex-center uk-margin-large-top" uk-tab>
-          <li class="uk-active"><a href="#">Profil</a></li>
-          <li><a href="#">Matchs</a></li>
-          <li><a href="#">Tournois</a></li>
-          <li><a href="#">Paramètres</a></li>
+          <router-link tag="li" :to="{ name: 'user.profile' }">
+            <a> Profile </a>
+          </router-link>
+          <router-link tag="li" :to="{ name: user.profile }">
+            <a> Profile </a>
+          </router-link>
+          <router-link tag="li" :to="{ name: user.profile }">
+            <a> Profile </a>
+          </router-link>
+          <router-link tag="li" :to="{ name: 'user.settings' }">
+            <a> Paramètres </a>
+          </router-link>
       </ul>
       <h1 id="idchallengers" class="uk-heading-divider">Informations de challengers</h1>
 

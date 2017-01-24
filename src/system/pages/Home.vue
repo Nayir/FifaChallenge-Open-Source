@@ -3,8 +3,8 @@
     <header-fifachallenge navbarclass="uk-navbar-transparent"></header-fifachallenge>
     <div id="hero" class="uk-container uk-text-center">
       <h1 class="uk-heading-primary uk-text-center uk-light uk-margin-large-bottom"> Prêt à relever le Challenge ?</h1>
-      <a href="/user/registration" class="uk-button uk-button-primary">Inscription</a>
-      <a href="/user/login" class="uk-button uk-button-secondary">Connexion</a>
+      <router-link to="/user/registration" class="uk-button uk-button-primary">Inscription</router-link>
+      <router-link to="/user/login" class="uk-button uk-button-secondary">Connexion</router-link>
     </div>
 
     <div class="waves">
