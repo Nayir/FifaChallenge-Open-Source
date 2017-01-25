@@ -22,42 +22,6 @@
             <h3>Renseignements importants</h3>
             <p>Afin de pouvoir commencer à jouer, vous devez indiquer vos <a href="/user/settings#idchallengers">informations de challengers</a> ci dessous</p>
           </div>
-          <div class="uk-grid-collapse" uk-grid>
-              <div class="uk-width-1-3@m uk-card uk-card-hover uk-card-body">
-                <div uk-grid>
-                  <div class="uk-width-1-2@m">
-                    <img class="uk-border-circle" width="100" height="100" :src="user.photoURL">
-                  </div>
-                  <div class="uk-width-1-2@m league uk-text-left">
-                    <h4>FifaChallenge League</h4>
-                    <p>DIVISION 3 </p>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerFcl" count="342 pt" legend="Point de League"></card-stat>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerFoot" count="27" legend="Matchs joués"></card-stat>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerScored" count="67" legend="Buts marqués"></card-stat>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerConceded" count="41" legend="Buts Encaissés"></card-stat>
-              </div>
-          </div>
-          <div class="uk-grid-collapse uk-flex-center" uk-grid>
-            <div class="uk-width-1-5@m">
-              <card-stat :icon="mediationIcon" count="2" legend="Médiation"></card-stat>
-            </div>
-            <div class="uk-width-1-5@m">
-              <card-stat :icon="mediationYellowCard" count="1" legend="Cartons Jaunes"></card-stat>
-            </div>
-            <div class="uk-width-1-5@m">
-              <card-stat :icon="mediationRedCard" count="0" legend="Cartons Rouges"></card-stat>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -67,7 +31,6 @@
 <script>
 import firebase from 'firebase'
 import cardStat from 'components/cardStat.vue'
-import routerTab from 'components/routerTab.vue'
 import soccerFoot from 'assets/images/soccer-foot.svg'
 import soccerFcl from 'assets/images/soccer-fcl.svg'
 import soccerScored from 'assets/images/soccer-scored.svg'
@@ -124,8 +87,7 @@ export default {
     }
   },
   components: {
-    cardStat,
-    routerTab
+    cardStat
   }
 }
 </script>

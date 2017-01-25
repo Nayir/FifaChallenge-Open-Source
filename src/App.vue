@@ -17,6 +17,7 @@ export default {
 
 <style>
 @import url('./assets/css/uikit.fifachallenge.css');
+@import url('./assets/css/custom.css');
 
 .background-primary {
   background-color: #3498DB!important;

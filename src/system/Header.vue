@@ -25,9 +25,10 @@
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li class="uk-navbar-subtitle">Développeurs</li>
                             <li><a href="https://github.com/Nayir/FifaChallenge-Open-Source">Github</a></li>
-                            <li><a href="#">Chat</a></li>
+                            <li><a href="https://gitter.im/fifachallenge/">Chat</a></li>
                             <li class="uk-navbar-subtitle">Gameurs passionés</li>
                             <li><a href="#">Groupe Facebook</a></li>
+                            <li><a href="https://discord.gg/4RM32Nr">Chat</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -71,9 +72,10 @@
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li class="uk-nav-header">Développeurs</li>
                             <li><a href="https://github.com/Nayir/FifaChallenge-Open-Source">Github</a></li>
-                            <li><a href="#">Chat</a></li>
+                            <li><a href="https://gitter.im/fifachallenge/">Chat</a></li>
                             <li class="uk-nav-header">Gameurs</li>
                             <li><a href="#">Groupe Facebook</a></li>
+                            <li><a href="https://discord.gg/4RM32Nr">Chat</a></li>
                         </ul>
                     </div>
                 </li>

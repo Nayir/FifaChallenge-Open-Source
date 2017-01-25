@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="uk-container">
-      <ul class="uk-flex-center uk-margin-large-top" uk-tab>
+      <ul class="uk-flex-center uk-margin-large-top router-tab">
           <router-link tag="li" :to="{ name: 'user.profile' }">
             <a> Profile </a>
           </router-link>
-          <router-link tag="li" :to="{ name: user.profile }">
-            <a> Profile </a>
+          <router-link tag="li" :to="{ name: 'user.matchs' }">
+            <a> Matchs </a>
           </router-link>
-          <router-link tag="li" :to="{ name: user.profile }">
-            <a> Profile </a>
+          <router-link tag="li" :to="{ name: 'user.tournaments' }">
+            <a> Tournois </a>
           </router-link>
           <router-link tag="li" :to="{ name: 'user.settings' }">
             <a> Paramètres </a>

@@ -8,21 +8,6 @@
 
 <script>
   export default {
-    data () {
-      return {
-        title: 'Profile',
-        menu: [
-          {
-            name: 'user.profile',
-            heading: 'Mon compte'
-          },
-          {
-            name: 'user.settings',
-            heading: 'Paramètres'
-          }
-        ]
-      }
-    }
   }
 </script>
 

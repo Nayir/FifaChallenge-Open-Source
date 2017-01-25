@@ -12,7 +12,10 @@ export const authentificationRoutes = [
   },
   {
     path: 'registration',
-    component: require('./vue/front/Registration.vue'),
+    components: {
+      header: headeruser,
+      content: require('./vue/front/Registration.vue')
+    },
     name: 'user.registration'
   },
   {
@@ -27,6 +30,22 @@ export const authentificationRoutes = [
       content: require('./vue/admin/Profile.vue')
     },
     name: 'user.profile'
+  },
+  {
+    path: 'matchs',
+    components: {
+      header: headeruser,
+      content: require('./vue/admin/Matchs.vue')
+    },
+    name: 'user.matchs'
+  },
+  {
+    path: 'tournaments',
+    components: {
+      header: headeruser,
+      content: require('./vue/admin/Tournaments.vue')
+    },
+    name: 'user.tournaments'
   },
   {
     path: 'settings',
