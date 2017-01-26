@@ -1,10 +1,10 @@
 <template>
   <div>
     <div>
-      <div class="uk-container">
+      <div class="uk-container uk-margin-large-bottom">
         <ul class="uk-flex-center uk-margin-large-top router-tab">
             <router-link tag="li" :to="{ name: 'user.profile' }">
-              <a> Profile </a>
+              <a> Profil </a>
             </router-link>
             <router-link tag="li" :to="{ name: 'user.matchs' }">
               <a> Matchs </a>
@@ -21,6 +21,63 @@
             <a class="uk-alert-close" uk-close></a>
             <h3>Renseignements importants</h3>
             <p>Afin de pouvoir commencer à jouer, vous devez indiquer vos <a href="/user/settings#idchallengers">informations de challengers</a> ci dessous</p>
+          </div>
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-hover uk-table-middle">
+                <thead>
+                    <tr>
+                        <th class="uk-table-shrink">ID</th>
+                        <th class="uk-width-1-4">Adversaire</th>
+                        <th class="uk-table-small uk-text-center">Score</th>
+                        <th class="uk-table">Tournoi</th>
+                        <th class="uk-table-small uk-text-center">Résumé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>01</td>
+                      <td class="uk-text-truncate">
+                        <a class="uk-link-reset" href="#">
+                          <img class="uk-preserve-width uk-border-circle" src="images/avatar.jpg" width="40" alt="">
+                          Adversaire 1
+                        </a>
+                      </td>
+                      <td class="uk-text-center">
+                          3 - 1
+                      </td>
+                      <td class="uk-text-truncate">FifaChallenge League - Division 3</td>
+                      <td><button class="uk-button uk-button-primary" type="button">Détails</button></td>
+                  </tr>
+                  <tr>
+                      <td>02</td>
+                      <td class="uk-text-truncate">
+                        <a class="uk-link-reset" href="#">
+                          <img class="uk-preserve-width uk-border-circle" src="images/avatar.jpg" width="40" alt="">
+                          Adversaire avec un nom trop long
+                        </a>
+                      </td>
+                      <td class="uk-text-center">
+                          4 - 1
+                      </td>
+                      <td class="uk-text-truncate">FifaChallenge League - Division 3</td>
+                      <td><button class="uk-button uk-button-primary" type="button">Détails</button></td>
+                  </tr>
+                  <tr>
+                      <td>03</td>
+                      <td class="uk-text-truncate">
+                        <a class="uk-link-reset" href="#">
+                          <img class="uk-preserve-width uk-border-circle" src="images/avatar.jpg" width="40" alt="">
+                          Adversaire 3
+                        </a>
+                      </td>
+                      <td class="uk-text-center">
+                          0 - 1
+                      </td>
+                      <td class="uk-text-truncate">FifaChallenge League - Division 3</td>
+                      <td><button class="uk-button uk-button-primary" type="button">Détails</button></td>
+                  </tr>
+                </tbody>
+            </table>
           </div>
         </div>
       </div>

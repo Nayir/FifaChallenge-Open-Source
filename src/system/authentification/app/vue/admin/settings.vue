@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="uk-container">
+    <div class="uk-container uk-margin-large-bottom">
       <ul class="uk-flex-center uk-margin-large-top router-tab">
           <router-link tag="li" :to="{ name: 'user.profile' }">
-            <a> Profile </a>
+            <a> Profil </a>
           </router-link>
           <router-link tag="li" :to="{ name: 'user.matchs' }">
             <a> Matchs </a>
