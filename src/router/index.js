@@ -15,6 +15,11 @@ export default new Router({
       name: 'root'
     },
     {
+      path: '/play',
+      component: require('../system/pages/Play.vue'),
+      name: 'play'
+    },
+    {
       path: '/user',
       component: require('../system/authentification/app/index.vue'),
       name: 'user',

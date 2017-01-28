@@ -36,13 +36,18 @@
                 </div>
             </div>
         </div>
-
+        <div class="uk-navbar-left">
+          <router-link :to="{ name: 'user.profile' }">
+            <img class="uk-border-circle" width="50" height="50" :src="user.photoURL">
+            <span class="uk-text-middle">Username</span>
+          </router-link>
+        </div>
         <div class="uk-navbar-center">
 
-            <ul class="uk-navbar-nav">
+            <ul class="uk-navbar-nav play">
               <li class="uk-active">
-                <a href="/">
-                  <img id="logo" src="~assets/images/fifachallenge_logo.svg"/>
+                <a href="/play" class="uk-button uk-button-danger">
+                  JOUER
                 </a>
               </li>
             </ul>
@@ -91,6 +96,21 @@
 import firebase from 'firebase'
 export default {
   name: 'header',
+  data () {
+    return {
+      user: []
+    }
+  },
+  mounted () {
+    var self = this
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        self.user = user
+      } else {
+        // TODO Leave the page ?
+      }
+    })
+  },
   methods: {
     signOut () {
       var self = this
@@ -105,7 +125,10 @@ export default {
 </script>
 
 <style scoped>
-  #logo {
-    height: 50px;
+  .play li {
+    width: 200px;
+  }
+  .play li a {
+    font-size: 24px;
   }
 </style>

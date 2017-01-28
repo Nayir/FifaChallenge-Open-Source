@@ -63,11 +63,21 @@
 <script>
 import dynamics from 'dynamics.js'
 import HeaderFifachallenge from '../Header'
+import firebase from 'firebase'
 
 export default {
   name: 'home',
   components: {
     HeaderFifachallenge
+  },
+  beforeRouteEnter (to, from, next) {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        next('/play')
+      } else {
+        next(true)
+      }
+    })
   },
   mounted () {
     var item = document.querySelectorAll('.dot')
