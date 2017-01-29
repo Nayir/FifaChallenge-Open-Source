@@ -1,5 +1,5 @@
-import headerfront from '../../HeaderFront.vue'
-import headeruser from '../../HeaderUser.vue'
+import headerfront from 'src/system/HeaderFront.vue'
+import headeruser from 'src/system/HeaderUser.vue'
 
 export const authentificationRoutes = [
   {

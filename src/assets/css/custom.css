@@ -73,3 +73,7 @@ body {
     -webkit-transition: color 0.1s ease-in-out;
     transition: color 0.1s ease-in-out;
 }
+
+.uk-card-grey {
+  background-color: #fafafa;
+}

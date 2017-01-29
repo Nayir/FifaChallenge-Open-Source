@@ -87,27 +87,12 @@
 
 <script>
 import firebase from 'firebase'
-import cardStat from 'components/cardStat.vue'
-import soccerFoot from 'assets/images/soccer-foot.svg'
-import soccerFcl from 'assets/images/soccer-fcl.svg'
-import soccerScored from 'assets/images/soccer-scored.svg'
-import soccerConceded from 'assets/images/soccer-conceded.svg'
-import mediationIcon from 'assets/images/mediation-icon.svg'
-import mediationYellowCard from 'assets/images/mediation-yellowcard.svg'
-import mediationRedCard from 'assets/images/mediation-redcard.svg'
 
 export default {
   data () {
     return {
       user: 'hello',
-      log: '',
-      soccerFoot,
-      soccerFcl,
-      soccerScored,
-      soccerConceded,
-      mediationIcon,
-      mediationYellowCard,
-      mediationRedCard
+      log: ''
     }
   },
   beforeCreate () {
@@ -142,9 +127,6 @@ export default {
       provider.addScope('https://www.googleapis.com/auth/plus.login')
       firebase.auth().signInWithPopup(provider)
     }
-  },
-  components: {
-    cardStat
   }
 }
 </script>
