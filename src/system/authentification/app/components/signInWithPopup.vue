@@ -11,7 +11,7 @@
     props: ['provider', 'name'],
     methods: {
       signInWithPopup () {
-        var self = this
+        // var self = this
         var provider = this.provider
         console.log(provider)
         provider.addScope('https://www.googleapis.com/auth/plus.login')
@@ -22,14 +22,14 @@
           // The signed-in user info.
           var user = result.user
           console.log(user)
-
           // Create User
           firebase.database().ref('users/' + user.uid).set({
             uid: user.uid,
             providerData: user.providerData
           })
         }).then(function () {
-          self.$router.push({name: 'user.profile'})
+          console.log('works')
+          // self.$router.push({name: 'user.profile'})
         }).catch(function (error) {
           // Handle Errors here.
           var errorCode = error.code

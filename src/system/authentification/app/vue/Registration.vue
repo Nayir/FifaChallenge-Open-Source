@@ -1,5 +1,6 @@
 <template>
   <div>
+    <header-front></header-front>
     <div class="container">
       <h3 class="uk-text-center uk-margin-large-top">Inscription en un clic</h1>
       <div class="uk-container uk-text-center uk-margin-xlarge-top">
@@ -32,7 +33,8 @@ export default {
     next(true)
   },
   components: {
-    signInWithPopup: require('./../../components/signInWithPopup.vue')
+    signInWithPopup: require('src/system/authentification/app/components/signInWithPopup.vue'),
+    headerFront: require('src/system/headerFront.vue')
   }
 }
 </script>

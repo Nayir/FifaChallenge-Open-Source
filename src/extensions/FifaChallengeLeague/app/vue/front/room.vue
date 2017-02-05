@@ -27,27 +27,29 @@
                         <th class="uk-width-1-6">Console</th>
                         <th class="uk-width-1-6">Réputation</th>
                         <th class="uk-width-1-6">FCP</th>
-                        <th class="uk-width-1-3 uk-text-center">Challenge</th>
+                        <th class="uk-width-1-3"></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                           <td class="uk-text-truncate">
                             <a class="uk-link-reset" href="#">
-                              <img class="uk-preserve-width uk-border-circle" :src="club" width="40" alt="adversaire 1">
+                              <img class="uk-preserve-width uk-border-circle" src="https://pbs.twimg.com/profile_images/824408352147075072/77M4Sg6n_400x400.jpg" width="40" alt="adversaire 1">
                               Adversaire 1
                             </a>
                           </td>
                           <td>
-                            XBOX 360
+                            <img class="console" :src="xbox"/> XBOX 360
                           </td>
                           <td>
-                            * * * * *
+                            <img class="star" :src="star"/>
+                            <img class="star" :src="star"/>
+                            <img class="star" :src="star"/>
                           </td>
                           <td>
                             22 FCP
                           </td>
-                          <td class="uk-text-center"><button class="uk-button uk-button-primary" type="button">Accepter</button></td>
+                          <td class="uk-text-center"><button class="uk-button uk-button-primary" type="button">Défier</button></td>
                       </tr>
                     </tbody>
                 </table>
@@ -96,6 +98,9 @@
 <script>
 import firebase from 'firebase'
 import club from 'assets/images/club.svg'
+import star from 'assets/images/star.svg'
+import xbox from 'assets/images/xbox-logo.svg'
+import playstation from 'assets/images/playstation-logo.svg'
 import RangeSlider from 'vue-range-slider'
 import 'vue-range-slider/dist/vue-range-slider.css'
 
@@ -105,6 +110,9 @@ export default {
       user: 'hello',
       log: '',
       club,
+      star,
+      xbox,
+      playstation,
       fcpValue: 2
     }
   },
@@ -160,6 +168,16 @@ export default {
   text-transform: uppercase;
 }
 
+.star {
+  width: 20px;
+  padding-bottom: 5px;
+}
+
+.console {
+  width: 15px;
+  padding-bottom: 3px;
+}
+
 .uk-tab > .uk-active > a {
   color: #3498DB;
 }
@@ -180,4 +198,5 @@ export default {
 .range-slider {
   padding: 0;
 }
+
 </style>

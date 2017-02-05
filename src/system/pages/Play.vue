@@ -15,10 +15,10 @@
           </div>
           <div class="leage uk-width-1-3@m uk-margin-large-top">
             <h3 class="uk-text-center">FifaChallenge League</h3>
-            <div class="play-fcleague">
+            <router-link tag="div" :to="{ name: 'fcl.room' }" class="play-fcleague">
               <img class="uk-align-center" :src="halfcircle" width="400" height="400" />
               <img class="cup uk-align-center" :src="cup" width="400" height="400" />
-            </div>
+            </router-link>
           </div>
           <div class="soon uk-width-1-3@m uk-visible@m uk-margin-large-top">
             <h3 class="uk-text-center">Bientôt</h3>
@@ -75,6 +75,10 @@ export default {
 .play-fcleague, .play-soon {
   position: relative;
   margin-top: 150px;
+}
+
+.play-fcleague {
+  cursor: pointer;
 }
 .play-fcleague img, .play-soon img{
   position: absolute;

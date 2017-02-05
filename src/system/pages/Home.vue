@@ -3,8 +3,8 @@
     <header-fifachallenge navbarclass="uk-navbar-transparent"></header-fifachallenge>
     <div id="hero" class="uk-container uk-text-center">
       <h1 class="uk-heading-primary uk-text-center uk-light uk-margin-large-bottom"> Prêt à relever le Challenge ?</h1>
-      <router-link to="/user/registration" class="uk-button uk-button-primary">Inscription</router-link>
-      <router-link to="/user/login" class="uk-button uk-button-secondary">Connexion</router-link>
+      <router-link :to="{ name: 'registration' }" class="uk-button uk-button-primary">Inscription</router-link>
+      <router-link :to="{ name: 'login' }" class="uk-button uk-button-secondary">Connexion</router-link>
     </div>
 
     <div class="waves">
@@ -62,7 +62,7 @@
 
 <script>
 import dynamics from 'dynamics.js'
-import HeaderFifachallenge from '../Header'
+import HeaderFifachallenge from 'system/Header'
 import firebase from 'firebase'
 
 export default {

@@ -37,9 +37,14 @@
             </div>
         </div>
         <div class="uk-navbar-left">
-          <router-link :to="{ name: 'user.profile' }">
-            <img class="uk-border-circle" width="50" height="50" :src="user.photoURL">
-            <span class="uk-text-middle">Username</span>
+          <router-link class="uk-link-reset" :to="{ name: 'user.profile' }">
+            <div class="uk-float-left">
+              <img class="uk-border-circle" width="50" height="50" :src="user.photoURL">
+            </div>
+            <div class="uk-float-right">
+              <span>{{ user.displayName }}</span><br />
+              <span>2000 FCP</span>
+            </div>
           </router-link>
         </div>
         <div class="uk-navbar-center">

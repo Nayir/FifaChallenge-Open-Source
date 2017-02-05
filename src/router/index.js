@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-
-import {authentificationRoutes} from '../system/authentification/app/routes.js'
+import {profileRoutes} from 'src/extensions/Profile/app/routes.js'
 import {fifachallengeleagueRoutes} from 'src/extensions/FifaChallengeLeague/app/routes.js'
 
 export default new Router({
@@ -12,29 +11,44 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: require('../system/pages/Home.vue'),
+      component: require('src/system/pages/Home.vue'),
       name: 'root'
     },
     {
+      path: '/login',
+      component: require('src/system/authentification/app/vue/Login.vue'),
+      name: 'login'
+    },
+    {
+      path: '/registration',
+      component: require('src/system/authentification/app/vue/Registration.vue'),
+      name: 'registration'
+    },
+    {
+      path: '/requestpassword',
+      component: require('src/system/authentification/app/vue/RequestPassword.vue'),
+      name: 'requestpassword'
+    },
+    {
       path: '/play',
-      component: require('../system/pages/Play.vue'),
+      component: require('system/pages/Play.vue'),
       name: 'play'
     },
     {
       path: '/fcl',
-      component: require('src/extensions/FifaChallengeLeague/app/index.vue'),
+      component: require('extensions/FifaChallengeLeague/app/index.vue'),
       name: 'fifachallengeleague',
       children: fifachallengeleagueRoutes
     },
     {
       path: '/user',
-      component: require('../system/authentification/app/index.vue'),
+      component: require('extensions/FifaChallengeLeague/app/index.vue'),
       name: 'user',
-      children: authentificationRoutes
+      children: profileRoutes
     },
     {
       path: '*',
-      component: require('../system/pages/Home.vue')
+      component: require('system/pages/Home.vue')
     }
   ]
 })
