@@ -17,11 +17,7 @@
             </router-link>
         </ul>
         <div>
-          <div uk-alert>
-            <a class="uk-alert-close" uk-close></a>
-            <h3>Renseignements importants</h3>
-            <p>Afin de pouvoir commencer à jouer, vous devez indiquer vos <a href="/user/settings#idchallengers">informations de challengers</a> ci dessous</p>
-          </div>
+          <alert :username="profile.username"></alert>
           <div class="uk-grid-collapse" uk-grid>
               <div class="uk-width-1-3@m uk-card uk-card-hover uk-card-body">
                 <div uk-grid>
@@ -35,24 +31,24 @@
                 </div>
               </div>
               <div class="uk-width-expand@m">
-                <card-stat :icon="soccerFcl" count="342 pt" legend="Point de League"></card-stat>
+                <card-stat :icon="soccerFcl" count="0" legend="Point de League"></card-stat>
               </div>
               <div class="uk-width-expand@m">
-                <card-stat :icon="soccerFoot" count="27" legend="Matchs joués"></card-stat>
+                <card-stat :icon="soccerFoot" count="0" legend="Matchs joués"></card-stat>
               </div>
               <div class="uk-width-expand@m">
-                <card-stat :icon="soccerScored" count="67" legend="Buts marqués"></card-stat>
+                <card-stat :icon="soccerScored" count="0" legend="Buts marqués"></card-stat>
               </div>
               <div class="uk-width-expand@m">
-                <card-stat :icon="soccerConceded" count="41" legend="Buts Encaissés"></card-stat>
+                <card-stat :icon="soccerConceded" count="0" legend="Buts Encaissés"></card-stat>
               </div>
           </div>
           <div class="uk-grid-collapse uk-flex-center" uk-grid>
             <div class="uk-width-1-5@m">
-              <card-stat :icon="mediationIcon" count="2" legend="Médiation"></card-stat>
+              <card-stat :icon="mediationIcon" count="0" legend="Médiation"></card-stat>
             </div>
             <div class="uk-width-1-5@m">
-              <card-stat :icon="mediationYellowCard" count="1" legend="Cartons Jaunes"></card-stat>
+              <card-stat :icon="mediationYellowCard" count="0" legend="Cartons Jaunes"></card-stat>
             </div>
             <div class="uk-width-1-5@m">
               <card-stat :icon="mediationRedCard" count="0" legend="Cartons Rouges"></card-stat>
@@ -67,6 +63,7 @@
 <script>
 import firebase from 'firebase'
 import cardStat from 'components/cardStat.vue'
+import alert from 'extensions/Profile/app/components/alert.vue'
 import routerTab from 'components/routerTab.vue'
 import soccerFoot from 'assets/images/soccer-foot.svg'
 import soccerFcl from 'assets/images/soccer-fcl.svg'
@@ -81,6 +78,7 @@ export default {
     return {
       user: 'hello',
       log: '',
+      profile: [],
       soccerFoot,
       soccerFcl,
       soccerScored,
@@ -114,7 +112,23 @@ export default {
   },
   components: {
     cardStat,
-    routerTab
+    routerTab,
+    alert
+  },
+  mounted () {
+    var self = this
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        self.user = user
+        self.log = true
+        firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
+          self.profile = snapshot.val().profile
+        })
+      } else {
+        self.user = []
+        self.log = false
+      }
+    })
   }
 }
 </script>

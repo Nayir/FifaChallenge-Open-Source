@@ -41,9 +41,9 @@
             <div class="uk-float-left">
               <img class="uk-border-circle" width="50" height="50" :src="user.photoURL">
             </div>
-            <div class="uk-float-right">
-              <span>{{ user.displayName }}</span><br />
-              <span>2000 FCP</span>
+            <div class="uk-float-right profile-info">
+              <span>{{ username }}</span><br />
+              <span>0 FCP</span>
             </div>
           </router-link>
         </div>
@@ -103,7 +103,17 @@ export default {
   name: 'header',
   data () {
     return {
-      user: []
+      user: [],
+      profile: []
+    }
+  },
+  computed: {
+    username () {
+      if (this.profile.username) {
+        return this.profile.username
+      } else {
+        return this.user.displayName
+      }
     }
   },
   mounted () {
@@ -111,6 +121,10 @@ export default {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         self.user = user
+        firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
+          self.profile = snapshot.val().profile
+          self.showSaveButton = true
+        })
       } else {
         // TODO Leave the page ?
       }
@@ -135,5 +149,9 @@ export default {
   }
   .play li a {
     font-size: 24px;
+  }
+
+  .profile-info span {
+    margin-left: 20px;
   }
 </style>

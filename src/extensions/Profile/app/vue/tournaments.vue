@@ -73,6 +73,21 @@ export default {
       mediationRedCard
     }
   },
+  mounted () {
+    var self = this
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        self.user = user
+        self.log = true
+        firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
+          self.profile = snapshot.val().profile
+        })
+      } else {
+        self.user = []
+        self.log = false
+      }
+    })
+  },
   beforeCreate () {
     var self = this
     firebase.auth().onAuthStateChanged(function (user) {

@@ -1,0 +1,63 @@
+{
+  "users": {
+    "profile": {
+
+    },
+    "providerData": {
+      "displayName": "Nayir Chami",
+      "email": "nayir.chami@gmail.com",
+      "photoURL": "https://lh6.googleusercontent.com/...",
+      "providerId": "google.com",
+      "uid": "23984023984"
+
+    },
+    "created_at": "1486424590",
+    "last_logins":{
+      "l1":{
+          "loginAt":"1486424590",
+          "ip_address":"234.34.56.1"
+      },
+      "l2":{
+          "loginAt":"1486424590",
+          "ip_address":"156.12.36.1"
+      }
+    },
+    "matchs" : {
+      "0" : {
+        "id": "23984023984",
+        "statu": "1",
+        "description": "description of match",
+        "type": "fcul",
+        "opponent_name": "opponent_name",
+        "opponent_uid": "opponent_uid",
+        "goal_conceed": "2",
+        "goal_scored":"4"
+      }
+    },
+    "play": {
+
+    }
+  },
+  "tournaments" : {
+    "fcul" : {
+      "no_of_challengers" : 3,
+      "challengers" : {
+        "user1":true,
+        "user3":true
+      },
+      "ranking" : {
+        "1" : {
+          "uid" : "challenger_uid",
+          "pts" : "324"
+        } ,
+        "2" : {
+          "uid" : "challenger_uid",
+          "pts" : "323"
+        } ,
+      },
+      "matchs": {
+        "no_of_matchs": 4
+      }
+    }
+  }
+}

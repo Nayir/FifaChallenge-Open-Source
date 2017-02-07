@@ -16,16 +16,26 @@
         console.log(provider)
         provider.addScope('https://www.googleapis.com/auth/plus.login')
         firebase.auth().signInWithPopup(provider).then(function (result) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken
-          console.log(token)
           // The signed-in user info.
           var user = result.user
-          console.log(user)
           // Create User
           firebase.database().ref('users/' + user.uid).set({
             uid: user.uid,
-            providerData: user.providerData
+            providerData: user.providerData,
+            profile: {
+              username: '',
+              gamerinfo: {
+                playstationfour: {
+                  owned: false,
+                  id: ''
+                },
+                xboxone: {
+                  owned: false,
+                  id: ''
+                }
+              },
+              last_login: ''
+            }
           })
         }).then(function () {
           console.log('works')

@@ -61,6 +61,7 @@
 
 <script>
 import firebase from 'firebase'
+import profileMixins from 'extensions/Profile/app/mixins.js'
 // import UIkit from 'uikit'
 
 export default {
@@ -86,23 +87,8 @@ export default {
       }
     }
   },
-  mounted () {
-    var self = this
-    // Check if user is logged
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        self.user = user
-        self.log = true
-        firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
-          self.profile = snapshot.val().profile
-          self.showSaveButton = true
-          return console.log('data loaded')
-        })
-      } else {
-        self.user = []
-        self.log = false
-      }
-    })
+  beforeMount () {
+    this.firebaseCheckLogged(true, this.firebaseDatabaseGetProfile)
   },
   watch: {
     // TODO Change this code for matching with firebase > Safer and better
@@ -123,6 +109,7 @@ export default {
       this.ResetSaveButton()
     }
   },
+  mixins: [profileMixins],
   methods: {
     UpdateData () {
       // Get data from vue

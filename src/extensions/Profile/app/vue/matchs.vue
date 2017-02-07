@@ -17,11 +17,7 @@
             </router-link>
         </ul>
         <div>
-          <div uk-alert>
-            <a class="uk-alert-close" uk-close></a>
-            <h3>Renseignements importants</h3>
-            <p>Afin de pouvoir commencer à jouer, vous devez indiquer vos <a href="/user/settings#idchallengers">informations de challengers</a> ci dessous</p>
-          </div>
+          <alert :username="profile.username"></alert>
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-hover uk-table-middle">
                 <thead>
@@ -87,12 +83,13 @@
 
 <script>
 import firebase from 'firebase'
-
+import alert from 'extensions/Profile/app/components/alert.vue'
 export default {
   data () {
     return {
       user: 'hello',
-      log: ''
+      log: '',
+      profile: []
     }
   },
   beforeCreate () {
@@ -103,6 +100,21 @@ export default {
         self.log = true
       } else {
         self.$router.push({ name: 'user.login' })
+      }
+    })
+  },
+  mounted () {
+    var self = this
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        self.user = user
+        self.log = true
+        firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
+          self.profile = snapshot.val().profile
+        })
+      } else {
+        self.user = []
+        self.log = false
       }
     })
   },
@@ -127,6 +139,9 @@ export default {
       provider.addScope('https://www.googleapis.com/auth/plus.login')
       firebase.auth().signInWithPopup(provider)
     }
+  },
+  components: {
+    alert
   }
 }
 </script>
