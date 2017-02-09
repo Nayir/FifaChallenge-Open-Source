@@ -1,6 +1,7 @@
 # fifachallenge
 
 > A Vuejs Open Source Project for Esport FIFA
+> Version 1.1
 
 ## Build Setup
 

@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 import {profileRoutes} from 'src/extensions/Profile/app/routes.js'
 import {fifachallengeleagueRoutes} from 'src/extensions/FifaChallengeLeague/app/routes.js'
+import headerFifachallenge from 'src/system/headers/app/vue/Header.vue'
 
 export default new Router({
   mode: 'history',
@@ -11,44 +12,68 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: require('src/system/pages/Home.vue'),
+      components: {
+        header: headerFifachallenge,
+        content: require('src/system/pages/Home.vue')
+      },
       name: 'root'
     },
     {
       path: '/login',
-      component: require('src/system/authentification/app/vue/Login.vue'),
+      components: {
+        header: headerFifachallenge,
+        content: require('src/system/authentification/app/vue/Login.vue')
+      },
       name: 'login'
     },
     {
       path: '/registration',
-      component: require('src/system/authentification/app/vue/Registration.vue'),
+      components: {
+        header: headerFifachallenge,
+        content: require('src/system/authentification/app/vue/Registration.vue')
+      },
       name: 'registration'
     },
     {
       path: '/requestpassword',
-      component: require('src/system/authentification/app/vue/RequestPassword.vue'),
+      components: {
+        header: headerFifachallenge,
+        content: require('src/system/authentification/app/vue/RequestPassword.vue')
+      },
       name: 'requestpassword'
     },
     {
       path: '/play',
-      component: require('system/pages/Play.vue'),
+      components: {
+        header: headerFifachallenge,
+        content: require('system/pages/Play.vue')
+      },
       name: 'play'
     },
     {
       path: '/fcl',
-      component: require('extensions/FifaChallengeLeague/app/index.vue'),
+      components: {
+        header: headerFifachallenge,
+        content: require('extensions/FifaChallengeLeague/app/index.vue')
+      },
       name: 'fifachallengeleague',
       children: fifachallengeleagueRoutes
     },
     {
       path: '/user',
-      component: require('extensions/FifaChallengeLeague/app/index.vue'),
+      components: {
+        header: headerFifachallenge,
+        content: require('extensions/FifaChallengeLeague/app/index.vue')
+      },
       name: 'user',
       children: profileRoutes
     },
     {
       path: '*',
-      component: require('system/pages/Home.vue')
+      components: {
+        header: headerFifachallenge,
+        content: require('src/system/pages/Home.vue')
+      }
     }
   ]
 })

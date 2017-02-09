@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-front></header-front>
     <div class="uk-container uk-text-center uk-margin-xlarge-top">
       <div class="uk-card">
         <sign-in-with-popup :provider="googleProvider" name="Google"></sign-in-with-popup>
@@ -25,8 +24,7 @@ export default {
     this.googleProvider = new firebase.auth.GoogleAuthProvider()
   },
   components: {
-    signInWithPopup: require('src/system/authentification/app/components/signInWithPopup.vue'),
-    headerFront: require('src/system/headerFront.vue')
+    signInWithPopup: require('src/system/authentification/app/components/signInWithPopup.vue')
   }
 }
 </script>

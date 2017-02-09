@@ -1,6 +1,6 @@
 <template>
     <a class="uk-button uk-button-default uk-button-large" v-on:click="signInWithPopup()">
-      <i uk-icon="icon: google; ratio: 2" class="uk-margin-small-right"></i>Se connecter avec {{ name }}
+      Se connecter avec {{ name }}
     </a>
 </template>
 
@@ -9,37 +9,72 @@
   import firebase from 'firebase'
   export default {
     props: ['provider', 'name'],
+    data () {
+      return {
+        uid: '',
+        providerData: []
+      }
+    },
     methods: {
+      createUser () {
+        var self = this
+        var creationDate = Date.now()
+        firebase.database().ref('users/' + this.uid).set({
+          uid: self.uid,
+          created: creationDate,
+          last_login: creationDate,
+          providerData: self.providerData[0],
+          profile: {
+            username: '',
+            gamerinfo: {
+              playstationfour: {
+                owned: false,
+                id: ''
+              },
+              xboxone: {
+                owned: false,
+                id: ''
+              }
+            }
+          }
+        }).then(function () {
+          // TODO Find another way to solve the asynchronous problem of onAuthStateChanged run before data updated
+          window.location.reload()
+        })
+      },
+      updateUser () {
+        var lastLoginDate = Date.now()
+        firebase.database().ref('users/' + this.uid).update({
+          last_login: lastLoginDate
+        }).then(function () {
+          // TODO Find another way to solve the asynchronous problem of onAuthStateChanged run before data updated
+          window.location.reload()
+        })
+      },
+      userFirstTimeCallback (userId, exists) {
+        var self = this
+        if (exists) {
+          self.updateUser()
+        } else {
+          self.createUser()
+        }
+      },
+      checkForFirstTime (userId) {
+        var self = this
+        firebase.database().ref('/users/' + userId).once('value', function (snapshot) {
+          var exists = (snapshot.val() !== null)
+          self.userFirstTimeCallback(userId, exists)
+        })
+      },
       signInWithPopup () {
-        // var self = this
+        var self = this
         var provider = this.provider
-        console.log(provider)
         provider.addScope('https://www.googleapis.com/auth/plus.login')
         firebase.auth().signInWithPopup(provider).then(function (result) {
-          // The signed-in user info.
-          var user = result.user
-          // Create User
-          firebase.database().ref('users/' + user.uid).set({
-            uid: user.uid,
-            providerData: user.providerData,
-            profile: {
-              username: '',
-              gamerinfo: {
-                playstationfour: {
-                  owned: false,
-                  id: ''
-                },
-                xboxone: {
-                  owned: false,
-                  id: ''
-                }
-              },
-              last_login: ''
-            }
-          })
+          self.uid = result.user.uid
+          self.providerData = result.user.providerData
         }).then(function () {
-          console.log('works')
-          // self.$router.push({name: 'user.profile'})
+          self.checkForFirstTime(self.uid)
         }).catch(function (error) {
           // Handle Errors here.
           var errorCode = error.code
@@ -52,10 +87,10 @@
           // The firebase.auth.AuthCredential type that was used.
           var credential = error.credential
           console.log(credential)
-          // ...
         })
       }
     }
+
   }
 </script>
 

@@ -16,11 +16,7 @@
           </router-link>
       </ul>
       <div>
-        <div uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <h3>Renseignements importants</h3>
-          <p>Afin de pouvoir commencer à jouer, vous devez indiquer vos <a href="/user/settings#idchallengers">informations de challengers</a> ci dessous</p>
-        </div>
+        <alert-settings-missing></alert-settings-missing>
         <div>
           <div class="uk-card uk-card-default uk-width-1-3@m">
             <div class="uk-card-badge uk-label uk-label-danger">League</div>
@@ -51,6 +47,7 @@
 <script>
 import firebase from 'firebase'
 import cardStat from 'components/cardStat.vue'
+import alertSettingsMissing from 'extensions/Profile/app/components/alertSettingsMissing.vue'
 import soccerFoot from 'assets/images/soccer-foot.svg'
 import soccerFcl from 'assets/images/soccer-fcl.svg'
 import soccerScored from 'assets/images/soccer-scored.svg'
@@ -88,17 +85,6 @@ export default {
       }
     })
   },
-  beforeCreate () {
-    var self = this
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        self.user = user
-        self.log = true
-      } else {
-        self.$router.push({ name: 'user.login' })
-      }
-    })
-  },
   watch: {
     $route () {
       var self = this
@@ -122,7 +108,8 @@ export default {
     }
   },
   components: {
-    cardStat
+    cardStat,
+    alertSettingsMissing
   }
 }
 </script>

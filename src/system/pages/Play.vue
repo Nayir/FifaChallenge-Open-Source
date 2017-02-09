@@ -1,6 +1,5 @@
 <template>
   <div class="home-background">
-    <header-fifachallenge navbarclass="uk-navbar-transparent"></header-fifachallenge>
     <main>
       <div id="main_content" class="uk-container uk-container-small uk-margin-large-top">
         <div class="uk-grid">
@@ -36,8 +35,6 @@
 </template>
 
 <script>
-import HeaderFifachallenge from '../HeaderUser'
-import firebase from 'firebase'
 import halfcircle from 'assets/images/green-halfcircle.svg'
 import ghalfcircle from 'assets/images/grey-halfcircle.svg'
 import cup from 'assets/images/cup-fcl.svg'
@@ -54,19 +51,6 @@ export default {
       podium,
       club
     }
-  },
-  beforeRouteEnter (to, from, next) {
-    // TODO Slow loading
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        next(true)
-      } else {
-        next('/user/login')
-      }
-    })
-  },
-  components: {
-    HeaderFifachallenge
   }
 }
 </script>

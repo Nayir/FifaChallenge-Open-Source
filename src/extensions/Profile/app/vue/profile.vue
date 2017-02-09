@@ -17,7 +17,7 @@
             </router-link>
         </ul>
         <div>
-          <alert :username="profile.username"></alert>
+          <alert-settings-missing></alert-settings-missing>
           <div class="uk-grid-collapse" uk-grid>
               <div class="uk-width-1-3@m uk-card uk-card-hover uk-card-body">
                 <div uk-grid>
@@ -63,7 +63,7 @@
 <script>
 import firebase from 'firebase'
 import cardStat from 'components/cardStat.vue'
-import alert from 'extensions/Profile/app/components/alert.vue'
+import alertSettingsMissing from 'extensions/Profile/app/components/alertSettingsMissing.vue'
 import routerTab from 'components/routerTab.vue'
 import soccerFoot from 'assets/images/soccer-foot.svg'
 import soccerFcl from 'assets/images/soccer-fcl.svg'
@@ -113,7 +113,7 @@ export default {
   components: {
     cardStat,
     routerTab,
-    alert
+    alertSettingsMissing
   },
   mounted () {
     var self = this

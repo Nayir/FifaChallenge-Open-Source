@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-front></header-front>
     <div class="container">
       <h3 class="uk-text-center uk-margin-large-top">Inscription en un clic</h1>
       <div class="uk-container uk-text-center uk-margin-xlarge-top">
@@ -26,15 +25,8 @@ export default {
   mounted () {
     this.googleProvider = new firebase.auth.GoogleAuthProvider()
   },
-  beforeRouteEnter (to, from, next) {
-    next(true)
-  },
-  beforeRouteLeave (to, from, next) {
-    next(true)
-  },
   components: {
-    signInWithPopup: require('src/system/authentification/app/components/signInWithPopup.vue'),
-    headerFront: require('src/system/headerFront.vue')
+    signInWithPopup: require('src/system/authentification/app/components/signInWithPopup.vue')
   }
 }
 </script>

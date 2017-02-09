@@ -116,17 +116,6 @@ export default {
       fcpValue: 2
     }
   },
-  beforeCreate () {
-    var self = this
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        self.user = user
-        self.log = true
-      } else {
-        self.$router.push({ name: 'user.login' })
-      }
-    })
-  },
   watch: {
     $route () {
       var self = this

@@ -17,7 +17,7 @@
             </router-link>
         </ul>
         <div>
-          <alert :username="profile.username"></alert>
+          <alert-settings-missing></alert-settings-missing>
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-hover uk-table-middle">
                 <thead>
@@ -34,7 +34,7 @@
                       <td>01</td>
                       <td class="uk-text-truncate">
                         <a class="uk-link-reset" href="#">
-                          <img class="uk-preserve-width uk-border-circle" src="images/avatar.jpg" width="40" alt="">
+                          <img class="uk-preserve-width uk-border-circle" src="https://pbs.twimg.com/profile_images/824408352147075072/77M4Sg6n_400x400.jpg" width="40" alt="adversaire 1">
                           Adversaire 1
                         </a>
                       </td>
@@ -48,7 +48,7 @@
                       <td>02</td>
                       <td class="uk-text-truncate">
                         <a class="uk-link-reset" href="#">
-                          <img class="uk-preserve-width uk-border-circle" src="images/avatar.jpg" width="40" alt="">
+                          <img class="uk-preserve-width uk-border-circle" src="https://pbs.twimg.com/profile_images/824408352147075072/77M4Sg6n_400x400.jpg" width="40" alt="adversaire 1">
                           Adversaire avec un nom trop long
                         </a>
                       </td>
@@ -62,7 +62,7 @@
                       <td>03</td>
                       <td class="uk-text-truncate">
                         <a class="uk-link-reset" href="#">
-                          <img class="uk-preserve-width uk-border-circle" src="images/avatar.jpg" width="40" alt="">
+                          <img class="uk-preserve-width uk-border-circle" src="https://pbs.twimg.com/profile_images/824408352147075072/77M4Sg6n_400x400.jpg" width="40" alt="adversaire 1">
                           Adversaire 3
                         </a>
                       </td>
@@ -83,7 +83,7 @@
 
 <script>
 import firebase from 'firebase'
-import alert from 'extensions/Profile/app/components/alert.vue'
+import alertSettingsMissing from 'extensions/Profile/app/components/alertSettingsMissing.vue'
 export default {
   data () {
     return {
@@ -91,17 +91,6 @@ export default {
       log: '',
       profile: []
     }
-  },
-  beforeCreate () {
-    var self = this
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        self.user = user
-        self.log = true
-      } else {
-        self.$router.push({ name: 'user.login' })
-      }
-    })
   },
   mounted () {
     var self = this
@@ -141,7 +130,7 @@ export default {
     }
   },
   components: {
-    alert
+    alertSettingsMissing
   }
 }
 </script>
