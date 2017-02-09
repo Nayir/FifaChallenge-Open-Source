@@ -21,6 +21,7 @@ firebase.initializeApp(config)
 
 // state.authentification.isauth initialisation
 firebase.auth().onAuthStateChanged(function (user) {
+  console.log('onAuthStateChanged')
   if (user) {
     // State Login Provider
     store.commit('logged')
@@ -37,14 +38,14 @@ firebase.auth().onAuthStateChanged(function (user) {
   } else {
     store.commit('disconnected')
     store.commit('clearAll')
-    router.push({name: 'root'})
   }
+
   // Global Navigation Guard for Authentification
   router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
       // this route requires auth, check if logged in
       // if not, redirect to login page.
-      if (store.state.authentification.isauth) {
+      if (!store.state.authentification.isauth) {
         next({
           path: '/login',
           query: { redirect: to.fullPath }
@@ -56,7 +57,6 @@ firebase.auth().onAuthStateChanged(function (user) {
       next()
     }
   })
-
   /* eslint-disable no-new */
   new Vue({
     el: '#app',

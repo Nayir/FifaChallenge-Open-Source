@@ -48,6 +48,7 @@ export default new Router({
         header: headerFifachallenge,
         content: require('system/pages/Play.vue')
       },
+      meta: { requiresAuth: true },
       name: 'play'
     },
     {
@@ -56,6 +57,7 @@ export default new Router({
         header: headerFifachallenge,
         content: require('extensions/FifaChallengeLeague/app/index.vue')
       },
+      meta: { requiresAuth: true },
       name: 'fifachallengeleague',
       children: fifachallengeleagueRoutes
     },
@@ -65,6 +67,7 @@ export default new Router({
         header: headerFifachallenge,
         content: require('extensions/FifaChallengeLeague/app/index.vue')
       },
+      meta: { requiresAuth: true },
       name: 'user',
       children: profileRoutes
     },

@@ -58,8 +58,8 @@
 
 <script>
 import firebase from 'firebase'
-import profileMixins from 'extensions/Profile/app/mixins.js'
 import alertDefaultUsername from 'extensions/Profile/app/components/alertDefaultUsername.vue'
+import profileMixins from 'extensions/Profile/app/mixins.js'
 // import UIkit from 'uikit'
 
 export default {
@@ -85,9 +85,10 @@ export default {
       }
     }
   },
-  beforeMount () {
-    this.firebaseCheckLogged(true, this.firebaseDatabaseGetProfile)
+  mounted () {
+    this.firebaseDatabaseGetProfile()
   },
+  mixins: [profileMixins],
   watch: {
     // TODO Change this code for matching with firebase > Safer and better
     // Whenever profile changes, this function will run
@@ -107,15 +108,13 @@ export default {
       this.ResetSaveButton()
     }
   },
-  mixins: [profileMixins],
   methods: {
     UpdateData () {
       // Get data from vue
       var postData = this.profile
-      var uid = this.user.uid
       // Updates
       var updates = {}
-      updates['/users/' + uid + '/profile/'] = postData
+      updates['/users/' + this.useruid + '/profile/'] = postData
       // TODO Make it callback
       // https://github.com/uikit/uikit/issues/2345 BUG UIkit.notification('Sauvegardé')
       // Saving to firebase

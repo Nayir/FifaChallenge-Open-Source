@@ -3,7 +3,8 @@ const state = {
   firebaseprofile: {
     displayName: '',
     photoURL: '',
-    email: ''
+    email: '',
+    uid: ''
   },
   fifachallengeprofile: {
     username: '',
@@ -26,6 +27,7 @@ const mutations = {
     state.firebaseprofile.displayName = n.displayName
     state.firebaseprofile.photoURL = n.photoURL
     state.firebaseprofile.email = n.email
+    state.firebaseprofile.uid = n.uid
   },
   updateFifachallenge (state, n) {
     state.fifachallengeprofile.username = n.username
