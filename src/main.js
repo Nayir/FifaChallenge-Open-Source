@@ -21,7 +21,6 @@ firebase.initializeApp(config)
 
 // state.authentification.isauth initialisation
 firebase.auth().onAuthStateChanged(function (user) {
-  console.log('onAuthStateChanged')
   if (user) {
     // State Login Provider
     store.commit('logged')

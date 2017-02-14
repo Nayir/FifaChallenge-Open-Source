@@ -15,16 +15,20 @@
             <a> Paramètres </a>
           </router-link>
       </ul>
-      <button v-on:click="UpdateData" v-bind:class="[saveClass]" class="uk-button uk-float-right" type="button" v-show="showSaveButton"> {{ saveState }} </button>
+      <button v-on:click="UpdateData" v-bind:class="[saveClass]" class="uk-button uk-float-right" type="button" v-show="showSaveButton&&formValidation"> {{ saveState }} </button>
       <h1 id="idplayer" class="uk-heading-divider">Informations Générales</h1>
       <alert-default-username></alert-default-username>
       <form class="uk-form-horizontal uk-margin-large">
-        <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-text">Nom Public</label>
+
+        <div class="uk-margin" :class="{ 'control': true }">
+          <label class="uk-form-label" for="username">Nom Public</label>
             <div class="uk-form-controls">
-                <input class="uk-input" id="form-horizontal-text" type="text" placeholder="" v-model="profile.username">
+              <input class="uk-input" id="username" type="text" placeholder="" name="username" v-model="profile.username">
+              <span class="uk-text-danger" v-if="usernameValidation">{{ usernameValidation }}</span>
             </div>
+
         </div>
+
       </form>
 
       <h1 id="idchallengers" class="uk-heading-divider">Informations de challengers</h1>
@@ -42,6 +46,7 @@
             <label class="uk-form-label" for="form-horizontal-text">ID en ligne</label>
             <div class="uk-form-controls">
                 <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Votre ID en ligne Playstation Network" v-model="profile.gamerinfo.playstationfour.id">
+                <span class="uk-text-danger" v-if="playstationIdValidation">{{ playstationIdValidation }}</span>
             </div>
         </div>
         <div class="uk-margin" v-show="profile.gamerinfo.xboxone.owned">
@@ -49,6 +54,7 @@
             <label class="uk-form-label" for="form-horizontal-text">Gamertag</label>
             <div class="uk-form-controls">
                 <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Votre Gamertag Xbox Live" v-model="profile.gamerinfo.xboxone.id">
+                <span class="uk-text-danger" v-if="xboxIdValidation">{{ xboxIdValidation }}</span>
             </div>
         </div>
       </form>
@@ -60,7 +66,8 @@
 import firebase from 'firebase'
 import alertDefaultUsername from 'extensions/Profile/app/components/alertDefaultUsername.vue'
 import profileMixins from 'extensions/Profile/app/mixins.js'
-// import UIkit from 'uikit'
+import customTests from 'system/approvejs/customTests.js'
+import computedTests from 'system/approvejs/computedTests.js'
 
 export default {
   data () {
@@ -87,8 +94,13 @@ export default {
   },
   mounted () {
     this.firebaseDatabaseGetProfile()
+    this.playstationIdTest()
   },
-  mixins: [profileMixins],
+  mixins: [
+    profileMixins,
+    customTests,
+    computedTests
+  ],
   watch: {
     // TODO Change this code for matching with firebase > Safer and better
     // Whenever profile changes, this function will run
