@@ -107,13 +107,15 @@ import firebase from 'firebase'
 import profileMixins from 'extensions/Profile/app/mixins.js'
 import RangeSlider from 'vue-range-slider'
 import 'vue-range-slider/dist/vue-range-slider.css'
-import _ from 'lodash'
+// import _ from 'lodash'
 
 export default {
   data () {
     return {
       challenges: [],
-      currentChallenge: [],
+      currentChallenge: {
+        id: ''
+      },
       newChallengeGameConsole: 'psfour',
       newChallengeFcp: '10',
       fcpValue: 2
@@ -124,13 +126,16 @@ export default {
       return this.$store.state.profile.firebaseprofile.uid
     }
   },
-  created () {
+  mounted () {
+    console.log(' mounted')
     var self = this
     firebase.database().ref('tournaments/fcul/matchs/active_challenges/challenges').on('value', function (snapshot) {
       var allChallenges = snapshot.val()
-      console.log('store currentChallenge : ' + self.$store.state.challenge.currentChallenge.id)
-      var challenges = _.omit(allChallenges, self.$store.state.challenge.currentChallenge.id)
-      self.challenges = challenges
+      if (self.$store.state.challenge.currentChallenge.id) {
+        // self.challenges = _.omit(allChallenges, self.$store.state.challenge.currentChallenge.id)
+      } else {
+        self.challenges = allChallenges
+      }
     })
     firebase.database().ref('users/' + this.$store.state.profile.firebaseprofile.uid + '/challenge').on('value', function (snapshot) {
       self.currentChallenge = snapshot.val()

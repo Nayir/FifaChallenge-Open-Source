@@ -69,23 +69,6 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
   })
 
-  // Global Navigation Guard for Username
-  router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresUsername)) {
-      // this route requires auth, check if logged in
-      // if not, redirect to login page.
-      if (!store.state.profile.fifachallengeprofile.username) {
-        next({
-          path: '/user/settings',
-          query: { redirect: to.fullPath }
-        })
-      } else {
-        next()
-      }
-    } else {
-      next()
-    }
-  })
   /* eslint-disable no-new */
   new Vue({
     el: '#app',

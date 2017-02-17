@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div class="uk-notification uk-notification-bottom-right">
+      <div class="uk-notification-message uk-button-danger" style="opacity: 1; margin-top: 0px; margin-bottom: 10px;">
+        <div class="uk-text-center">
+          <div>Challenge en cours</div>
+        </div>
+      </div>
+    </div>
     <nav class="uk-navbar-container background-home uk-light" uk-navbar>
         <div class="uk-navbar-left">
             <a href="#offcanvas-slide" class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle></a>
@@ -149,6 +156,10 @@ export default {
 </script>
 
 <style scoped>
+  .uk-icon > svg {
+    margin-left: 20px;
+  }
+
   #logo {
     height: 50px;
   }
