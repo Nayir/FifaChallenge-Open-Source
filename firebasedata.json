@@ -1,7 +1,9 @@
 {
   "users": {
     "profile": {
-
+      "reputation" : 3,
+      "gamerinfo": {},
+      "username" : "John Doe"
     },
     "providerData": {
       "displayName": "Nayir Chami",
@@ -25,13 +27,25 @@
     "matchs" : {
       "0" : {
         "id": "23984023984",
-        "statu": "1",
+        "statu": "done",
+        "gameConsole": "this.newChallengeGameConsole",
+        "fcp": "this.newChallengeFcp",
         "description": "description of match",
         "type": "fcul",
         "opponent_name": "opponent_name",
         "opponent_uid": "opponent_uid",
         "goal_conceed": "2",
         "goal_scored":"4"
+      }
+    },
+    "challenge" : {
+      "firebaseUniqueKey" : {
+        "id": "newChallengeKey",
+        "statu": "pending",
+        "gameConsole": "this.newChallengeGameConsole",
+        "fcp": "this.newChallengeFcp",
+        "description": "description of match",
+        "type": "fcul"
       }
     },
     "play": {
@@ -56,7 +70,24 @@
         } ,
       },
       "matchs": {
-        "no_of_matchs": 4
+        "no_of_matchs": 4,
+        "active_challenges" : {
+          "no_of_actives_challenges" : 0,
+          "challenges" : {
+            "0" : {
+              "id": "23984023984",
+              "statu": "1",
+              "description": "description of match",
+              "type": "fcul",
+              "challenger_name": "challenger_name",
+              "challenger_uid": "challenger_uid",
+              "opponent_name": "opponent_name",
+              "opponent_uid": "opponent_uid",
+              "goal_conceed": "2",
+              "goal_scored":"4"
+            }
+          }
+        }
       }
     }
   }
