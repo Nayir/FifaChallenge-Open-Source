@@ -4,14 +4,6 @@ module.exports = {
   computed: {
     usernameValidation () {
       var rule = {
-        required: {
-          required: true,
-          message: 'Ce champs est requis'
-        },
-        alphaNumeric: {
-          alphaNumeric: true,
-          message: 'Chiffres et lettres uniquement'
-        },
         min: {
           min: 3,
           message: 'Doit contenir 3 caractères minimum'
@@ -21,8 +13,7 @@ module.exports = {
           message: 'Doit contenir 16 caractères maximum'
         }
       }
-      var result = approve.value(this.profile.username, rule)
-      return result.errors[0]
+      return approve.value(this.profile.username, rule).errors[0]
     },
     playstationIdValidation () {
       var rule = {
@@ -35,8 +26,7 @@ module.exports = {
           message: 'Doit contenir 16 caractères maximum'
         }
       }
-      var result = approve.value(this.profile.gamerinfo.playstationfour.id, rule)
-      return result.errors[0]
+      return approve.value(this.profile.gamerinfo.playstationfour.id, rule).errors[0]
     },
     xboxIdValidation () {
       var rule = {
@@ -53,6 +43,10 @@ module.exports = {
       return result.errors[0]
     },
     formValidation () {
+      var usernameinfoValidation = true
+      if (this.profile.username) {
+        usernameinfoValidation = !this.usernameValidation
+      }
       var playstationGamerinfoBValidation = true
       var xboxGamerinfoValidation = true
       if (this.profile.gamerinfo.playstationfour.owned && this.playstationIdValidation) {
@@ -61,7 +55,8 @@ module.exports = {
       if (this.profile.gamerinfo.xboxone.owned && this.xboxIdValidation) {
         xboxGamerinfoValidation = false
       }
-      return !this.usernameValidation && playstationGamerinfoBValidation && xboxGamerinfoValidation
+      console.log(usernameinfoValidation && playstationGamerinfoBValidation && xboxGamerinfoValidation)
+      return usernameinfoValidation && playstationGamerinfoBValidation && xboxGamerinfoValidation
     }
   }
 }

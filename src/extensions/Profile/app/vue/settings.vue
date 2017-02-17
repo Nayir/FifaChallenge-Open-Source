@@ -19,16 +19,13 @@
       <h1 id="idplayer" class="uk-heading-divider">Informations Générales</h1>
       <alert-default-username></alert-default-username>
       <form class="uk-form-horizontal uk-margin-large">
-
         <div class="uk-margin" :class="{ 'control': true }">
           <label class="uk-form-label" for="username">Nom Public</label>
             <div class="uk-form-controls">
-              <input class="uk-input" id="username" type="text" placeholder="" name="username" v-model="profile.username">
+              <input class="uk-input" id="username" type="text" placeholder="Votre nom public" name="username" v-model="profile.username">
               <span class="uk-text-danger" v-if="usernameValidation">{{ usernameValidation }}</span>
             </div>
-
         </div>
-
       </form>
 
       <h1 id="idchallengers" class="uk-heading-divider">Informations de challengers</h1>

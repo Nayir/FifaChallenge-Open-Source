@@ -57,7 +57,10 @@ export default new Router({
         header: headerFifachallenge,
         content: require('extensions/FifaChallengeLeague/app/index.vue')
       },
-      meta: { requiresAuth: true },
+      meta: {
+        requiresAuth: true,
+        requiresUsername: true
+      },
       name: 'fifachallengeleague',
       children: fifachallengeleagueRoutes
     },
