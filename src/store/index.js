@@ -5,6 +5,7 @@ import * as getters from './getters'
 import authentification from './modules/authentification'
 import profile from './modules/profile'
 import challenge from './modules/challenge'
+import loader from './modules/loader'
 
 Vue.use(Vuex)
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
   modules: {
     authentification,
     profile,
-    challenge
+    challenge,
+    loader
   },
   strict: debug
 })

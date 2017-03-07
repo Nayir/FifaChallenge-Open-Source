@@ -25,17 +25,8 @@
           last_login: creationDate,
           providerData: self.providerData[0],
           profile: {
-            username: '',
-            gamerinfo: {
-              playstationfour: {
-                owned: false,
-                id: ''
-              },
-              xboxone: {
-                owned: false,
-                id: ''
-              }
-            }
+            username: ''
+            // TODO Import from external mixin
           }
         }).then(function () {
           // TODO Find another way to solve the asynchronous problem of onAuthStateChanged run before data updated

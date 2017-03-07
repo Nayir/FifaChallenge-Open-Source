@@ -18,30 +18,30 @@
         </ul>
         <div>
           <alert-settings-missing></alert-settings-missing>
+          <div class="uk-grid-collapse uk-flex-center uk-margin-large-top" uk-grid>
+            <div class="uk-width-1-4@m">
+              <img class="uk-border-circle" width="100" height="100" :src="user.photoURL">
+              <span class="uk-text-middle">DIVISION 3</span>
+            </div>
+            <div class="uk-width-1-4@m">
+              <div class="uk-text-center">
+                <p style="line-height:100px;" class="uk-text-large" title="FifaChallenge Points" uk-tooltip><span class="uk-text-primary">42</span> FCP<span class="uk-text-meta"> (FifaChallenge Points)</span></p>
+              </div>
+            </div>
+          </div>
           <div class="uk-grid-collapse" uk-grid>
-              <div class="uk-width-1-3@m uk-card uk-card-hover uk-card-body">
-                <div uk-grid>
-                  <div class="uk-width-1-2@m">
-                    <img class="uk-border-circle" width="100" height="100" :src="user.photoURL">
-                  </div>
-                  <div class="uk-width-1-2@m league uk-text-left">
-                    <h4>FifaChallenge League</h4>
-                    <p>DIVISION 3 </p>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerFcl" count="0" legend="Point de League"></card-stat>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerFoot" count="0" legend="Matchs joués"></card-stat>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerScored" count="0" legend="Buts marqués"></card-stat>
-              </div>
-              <div class="uk-width-expand@m">
-                <card-stat :icon="soccerConceded" count="0" legend="Buts Encaissés"></card-stat>
-              </div>
+            <div class="uk-width-1-4@m">
+              <card-stat :icon="soccerFcl" count="0" legend="Point de League"></card-stat>
+            </div>
+            <div class="uk-width-1-4@m">
+              <card-stat :icon="soccerFoot" count="0" legend="Matchs joués"></card-stat>
+            </div>
+            <div class="uk-width-1-4@m">
+              <card-stat :icon="soccerScored" count="0" legend="Buts marqués"></card-stat>
+            </div>
+            <div class="uk-width-1-4@m">
+              <card-stat :icon="soccerConceded" count="0" legend="Buts Encaissés"></card-stat>
+            </div>
           </div>
           <div class="uk-grid-collapse uk-flex-center" uk-grid>
             <div class="uk-width-1-5@m">

@@ -1,5 +1,5 @@
 <template>
-  <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+  <div class="uk-card uk-card-body uk-text-center">
     <div class="icon-stat uk-inline">
       <img class="uk-position-bottom-center" width="50" height="50" :src="icon">
     </div>

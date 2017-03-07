@@ -77,3 +77,7 @@ body {
 .uk-card-grey {
   background-color: #fafafa;
 }
+
+.iziToast {
+  min-height: 36px;
+}

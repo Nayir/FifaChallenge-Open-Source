@@ -6,6 +6,7 @@ import App from './App'
 import store from './store'
 import router from './router'
 import firebase from 'firebase'
+import dataFifachallenge from 'system/data'
 
 Vue.use(Vuex)
 
@@ -29,6 +30,24 @@ var config = {
 
 firebase.initializeApp(config)
 
+// Global Navigation Guard for Authentification
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!store.state.authentification.isauth) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
 // state.authentification.isauth initialisation
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -37,43 +56,43 @@ firebase.auth().onAuthStateChanged(function (user) {
     store.commit('updateFirebase', user)
     // State Login FifaChallenge
     firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
-      var profileFifachallengedata = []
-      profileFifachallengedata['gamerinfo'] = snapshot.val().profile.gamerinfo
-      profileFifachallengedata['username'] = snapshot.val().profile.username
-      profileFifachallengedata['challenge'] = snapshot.val().challenge
-      return profileFifachallengedata
+      // Set profileData
+      var profileData = []
+      profileData['gameConsoles'] = (snapshot.val().profile && snapshot.val().profile.gameConsoles) ? snapshot.val().profile.gameConsoles : dataFifachallenge.profile.gameConsoles
+      profileData['consoleIds'] = (snapshot.val().profile && snapshot.val().profile.consoleIds) ? snapshot.val().profile.consoleIds : dataFifachallenge.profile.consoleIds
+      profileData['username'] = (snapshot.val().profile && snapshot.val().profile.username) ? snapshot.val().profile.username : dataFifachallenge.profile.username
+      // Set challengeData
+      var challengeData = snapshot.val().challenge ? snapshot.val().challenge : false
+      // Set the Object for promise
+      var data = {
+        profileData,
+        challengeData
+      }
+      return data
     }).then(function (data) {
-      store.commit('updateFifachallenge', data)
-      store.commit('updateChallenge', data.challenge)
+      store.commit('updateFifachallenge', data.profileData)
+      store.commit('updateChallenge', data.challengeData)
+      store.commit('Loaded')
+
+      /* eslint-disable no-new */
+      new Vue({
+        el: '#app',
+        store,
+        router,
+        render: h => h(App)
+      })
     })
   } else {
     store.commit('disconnected')
     store.commit('clearAll')
+    store.commit('Loaded')
+
+    /* eslint-disable no-new */
+    new Vue({
+      el: '#app',
+      store,
+      router,
+      render: h => h(App)
+    })
   }
-
-  // Global Navigation Guard for Authentification
-  router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-      // this route requires auth, check if logged in
-      // if not, redirect to login page.
-      if (!store.state.authentification.isauth) {
-        next({
-          path: '/login',
-          query: { redirect: to.fullPath }
-        })
-      } else {
-        next()
-      }
-    } else {
-      next()
-    }
-  })
-
-  /* eslint-disable no-new */
-  new Vue({
-    el: '#app',
-    store,
-    router,
-    render: h => h(App)
-  })
 })

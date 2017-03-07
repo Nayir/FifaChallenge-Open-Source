@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 // initial state
 const state = {
   firebaseprofile: {
@@ -7,17 +9,12 @@ const state = {
     uid: ''
   },
   fifachallengeprofile: {
-    username: '',
-    gamerinfo: {
-      playstationfour: {
-        id: '',
-        owned: false
-      },
-      xboxone: {
-        id: '',
-        owned: false
-      }
-    }
+    gameConsoles: [],
+    consoleIds: {
+      playstationNetwork: '',
+      gamerTag: ''
+    },
+    username: ''
   }
 }
 
@@ -30,11 +27,7 @@ const mutations = {
     state.firebaseprofile.uid = n.uid
   },
   updateFifachallenge (state, n) {
-    state.fifachallengeprofile.username = n.username
-    state.fifachallengeprofile.gamerinfo.playstationfour.id = n.gamerinfo.playstationfour.id
-    state.fifachallengeprofile.gamerinfo.playstationfour.owned = n.gamerinfo.playstationfour.owned
-    state.fifachallengeprofile.gamerinfo.xboxone.id = n.gamerinfo.xboxone.id
-    state.fifachallengeprofile.gamerinfo.xboxone.owned = n.gamerinfo.xboxone.owned
+    state.fifachallengeprofile = _.assign(state.fifachallengeprofile, n)
   },
   clearAll (state) {
     state.firebaseprofile = []

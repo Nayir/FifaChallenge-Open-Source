@@ -2,7 +2,11 @@
   "users": {
     "profile": {
       "reputation" : 3,
-      "gamerinfo": {},
+      "gameConsoles": {},
+      "consoleIds": {
+        "playstationNetwork": "",
+        "gamerTag": ""
+      },
       "username" : "John Doe"
     },
     "providerData": {

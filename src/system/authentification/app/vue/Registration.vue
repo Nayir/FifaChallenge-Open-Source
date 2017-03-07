@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <h3 class="uk-text-center uk-margin-large-top">Inscription en un clic</h1>
+      <h3 class="uk-text-center uk-margin-large-top">Inscription en un clic</h3>
       <div class="uk-container uk-text-center uk-margin-xlarge-top">
         <div class="uk-card">
           <sign-in-with-popup :provider="googleProvider" name="Google"></sign-in-with-popup>

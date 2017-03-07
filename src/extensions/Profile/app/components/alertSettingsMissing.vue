@@ -7,7 +7,7 @@
       <li v-if="!username">
         Votre Username
       </li>
-      <li v-if="!gamerinfo">
+      <li v-if="isEmptyGamerinfo">
         Au moins une console de jeu et son id de joueur correspondant
       </li>
     </ul>
@@ -15,20 +15,18 @@
 </template>
 
 <script>
+  import _ from 'lodash'
   export default {
     computed: {
       username () {
         return this.$store.state.profile.fifachallengeprofile.username
       },
-      gamerinfo () {
-        if (this.$store.state.profile.fifachallengeprofile.gamerinfo.playstationfour.owned || this.$store.state.profile.fifachallengeprofile.gamerinfo.xboxone.owned) {
-          return true
-        } else {
-          return false
-        }
+      isEmptyGamerinfo () {
+        var gamerinfo = _.isEmpty(this.$store.state.profile.fifachallengeprofile.gameConsoles)
+        return gamerinfo
       },
       settings () {
-        if (this.username && this.gamerinfo) {
+        if (this.username && !this.isEmptyGamerinfo) {
           return true
         } else {
           return false
@@ -37,7 +35,7 @@
       pourcentage () {
         if (this.settings) {
           return '100%'
-        } else if (this.username || this.gamerinfo) {
+        } else if (this.username || this.isLenghtGamerinfo) {
           return '50%'
         } else {
           return '0%'

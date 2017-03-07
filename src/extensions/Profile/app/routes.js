@@ -1,22 +1,22 @@
 export const profileRoutes = [
   {
     path: 'profile',
-    component: require('./vue/Profile.vue'),
+    component: require('./vue/profile.vue'),
     name: 'user.profile'
   },
   {
     path: 'matchs',
-    component: require('./vue/Matchs.vue'),
+    component: require('./vue/matchs.vue'),
     name: 'user.matchs'
   },
   {
     path: 'tournaments',
-    component: require('./vue/Tournaments.vue'),
+    component: require('./vue/tournaments.vue'),
     name: 'user.tournaments'
   },
   {
     path: 'settings',
-    component: require('./vue/Settings.vue'),
+    component: require('./vue/settings.vue'),
     name: 'user.settings'
   }
 ]

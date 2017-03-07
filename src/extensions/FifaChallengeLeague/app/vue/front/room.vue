@@ -50,50 +50,7 @@
               </div>
             </div>
             <div class="uk-width-1-4@m uk-card uk-card-default uk-card-body">
-              <div v-if="currentChallenge" style="z-index: 980;" uk-sticky="offset: 75; bottom: #top">
-                <h3 class="uk-text-center">Votre Challenge</h3>
-                <div>
-                  <p class="uk-text-center">
-                    {{ currentChallenge.gameConsole | gameconsole }}
-                  </p>
-                  <p class="uk-text-center">
-                    {{ currentChallenge.fcp }} FCP
-                  </p>
-                </div>
-                <div class="uk-text-center">
-                  <button class="uk-button uk-button-secondary" v-on:click.prevent="deleteChallenge">Annuler</button>
-                </div>
-              </div>
-              <div v-else style="z-index: 980;" uk-sticky="offset: 75; bottom: #top">
-                <h3>Proposer un défi</h3>
-                <div class="uk-grid">
-                  <form class="uk-form-stacked uk-width-1-1@m">
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="form-stacked-select">Console de jeu</label>
-                        <div class="uk-form-controls">
-                            <select class="uk-select" id="form-stacked-select" v-model="newChallengeGameConsole">
-                              <option value="psfour">Playstation4</option>
-                              <option value="xboxone">Xbox One</option>
-                            </select>
-                        </div>
-                        <label class="uk-form-label" for="form-stacked-select">Mise en jeu</label>
-                        <div class="uk-form-controls">
-                          <range-slider
-                              class="slider"
-                              min="1"
-                              max="1000"
-                              step="1"
-                              v-model="newChallengeFcp">
-                          </range-slider>
-                          <input class="uk-input" type="number" v-model="newChallengeFcp"/>
-                        </div>
-                    </div>
-                    <div class="uk-text-center">
-                      <button class="uk-button uk-button-secondary" v-on:click.prevent="createChallenge">Défier pour <span class="uk-text-primary">{{ newChallengeFcp }}</span> FCP</button>
-                    </div>
-                </form>
-                </div>
-              </div>
+                <challenge-card></challenge-card>
             </div>
           </div>
         </div>
@@ -104,83 +61,29 @@
 
 <script>
 import firebase from 'firebase'
-import profileMixins from 'extensions/Profile/app/mixins.js'
-import RangeSlider from 'vue-range-slider'
-import 'vue-range-slider/dist/vue-range-slider.css'
-// import _ from 'lodash'
+import _ from 'lodash'
+import challengeCard from 'components/challengeCard.vue'
 
 export default {
   data () {
     return {
       challenges: [],
-      currentChallenge: {
-        id: ''
-      },
       newChallengeGameConsole: 'psfour',
       newChallengeFcp: '10',
       fcpValue: 2
     }
   },
-  computed: {
-    useruid () {
-      return this.$store.state.profile.firebaseprofile.uid
-    }
-  },
   mounted () {
-    console.log(' mounted')
     var self = this
     firebase.database().ref('tournaments/fcul/matchs/active_challenges/challenges').on('value', function (snapshot) {
-      var allChallenges = snapshot.val()
-      if (self.$store.state.challenge.currentChallenge.id) {
-        // self.challenges = _.omit(allChallenges, self.$store.state.challenge.currentChallenge.id)
-      } else {
-        self.challenges = allChallenges
-      }
+      self.challenges = self.$store.state.challenge.challenge ? _.omit(snapshot.val(), self.$store.state.challenge.challenge.id) : snapshot.val()
     })
     firebase.database().ref('users/' + this.$store.state.profile.firebaseprofile.uid + '/challenge').on('value', function (snapshot) {
       self.currentChallenge = snapshot.val()
     })
   },
-  mixins: [profileMixins],
-  methods: {
-    createChallenge () {
-      var self = this
-      // Get a key for a new Post.
-      var newChallengeKey = firebase.database().ref('tournaments/fcul/matchs/active_challenges/').child('challenges').push().key
-      // A post entry.
-      var challengeData = {
-        id: newChallengeKey,
-        statu: 'pending',
-        challenger: {
-          uid: self.$store.state.profile.firebaseprofile.uid,
-          username: self.$store.state.profile.fifachallengeprofile.username,
-          photoURL: self.$store.state.profile.firebaseprofile.photoURL
-        },
-        gameConsole: this.newChallengeGameConsole,
-        fcp: this.newChallengeFcp,
-        description: 'description of match',
-        type: 'fcul'
-      }
-      // Write the new post's data simultaneously in the posts list and the user's post list.
-      var updates = {}
-      updates['/tournaments/fcul/matchs/active_challenges/challenges/' + newChallengeKey] = challengeData
-      updates['/users/' + this.$store.state.profile.firebaseprofile.uid + '/challenge/'] = challengeData
-      this.$store.commit('updateChallenge', challengeData)
-      firebase.database().ref().update(updates)
-    },
-    deleteChallenge () {
-      // A post entry.
-      var challengeData = {}
-      // Write the new post's data simultaneously in the posts list and the user's post list.
-      var updates = {}
-      updates['/tournaments/fcul/matchs/active_challenges/challenges/' + this.currentChallenge.id] = challengeData
-      updates['/users/' + this.$store.state.profile.firebaseprofile.uid + '/challenge/'] = challengeData
-      this.$store.commit('clearChallenge', challengeData)
-      firebase.database().ref().update(updates)
-    }
-  },
   components: {
-    RangeSlider
+    challengeCard
   }
 }
 </script>

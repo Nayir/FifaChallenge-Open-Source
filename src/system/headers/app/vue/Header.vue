@@ -1,12 +1,5 @@
 <template>
   <div>
-    <div class="uk-notification uk-notification-bottom-right">
-      <div class="uk-notification-message uk-button-danger" style="opacity: 1; margin-top: 0px; margin-bottom: 10px;">
-        <div class="uk-text-center">
-          <div>Challenge en cours</div>
-        </div>
-      </div>
-    </div>
     <nav class="uk-navbar-container background-home uk-light" uk-navbar>
         <div class="uk-navbar-left">
             <a href="#offcanvas-slide" class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle></a>
@@ -80,13 +73,13 @@
         <div class="uk-navbar-right">
           <ul v-if="isauth" class="uk-navbar-nav">
             <li>
-              <router-link title="Accueil" :to="{ name: 'root' }"><span uk-icon="icon: home"></router-link>
+              <router-link title="Accueil" :to="{ name: 'root' }"><span uk-icon="icon: home"></span></router-link>
             </li>
             <li>
-              <router-link title="Profil" :to="{ name: 'user.profile' }"><span uk-icon="icon: user"></router-link>
+              <router-link title="Profil" :to="{ name: 'user.profile' }"><span uk-icon="icon: user"></span></router-link>
             </li>
             <li>
-              <router-link title="Paramètres" :to="{ name: 'user.settings' }"><span uk-icon="icon: settings"></router-link>
+              <router-link title="Paramètres" :to="{ name: 'user.settings' }"><span uk-icon="icon: settings"></span></router-link>
             </li>
             <li><a title="Déconnexion" v-on:click="signOut()"><span uk-icon="icon: sign-out"></span></a></li>
           </ul>
@@ -122,11 +115,14 @@
         </div>
 
     </nav>
+
+    <challenge-trigger></challenge-trigger>
   </div>
 </template>
 
 <script>
 import authentificationMixins from 'system/authentification/app/mixins.js'
+import challengeTrigger from 'components/challengeTrigger.vue'
 
 export default {
   name: 'header',
@@ -151,6 +147,9 @@ export default {
     userphoto () {
       return this.$store.state.profile.firebaseprofile.photoURL
     }
+  },
+  components: {
+    challengeTrigger
   }
 }
 </script>

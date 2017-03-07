@@ -1,6 +1,6 @@
 // initial state
 const state = {
-  currentChallenge: {
+  challenge: {
     challenger: {
       photoURL: '',
       uid: '',
@@ -18,10 +18,10 @@ const state = {
 // mutations
 const mutations = {
   updateChallenge (state, n) {
-    state.currentChallenge = n
+    state.challenge = n
   },
   clearChallenge (state) {
-    state.currentChallenge = []
+    state.challenge = false
   }
 }
 

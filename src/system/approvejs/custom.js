@@ -3,7 +3,6 @@ import approve from 'approvejs'
 module.exports = {
   methods: {
     playstationIdTest () {
-      console.log('playstationIdTest')
       // instantiating a new object
       var playstationIdTest = {}
       // Add the parameters we expect

@@ -51,9 +51,6 @@ export default {
       podium,
       club
     }
-  },
-  mounted () {
-    console.log('hello play')
   }
 }
 </script>

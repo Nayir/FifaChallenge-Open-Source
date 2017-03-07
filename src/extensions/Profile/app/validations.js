@@ -26,7 +26,8 @@ module.exports = {
           message: 'Doit contenir 16 caractères maximum'
         }
       }
-      return approve.value(this.profile.gamerinfo.playstationfour.id, rule).errors[0]
+      // TODO Update with new data structure
+      return approve.value('gameConsoles.playstation', rule).errors[0]
     },
     xboxIdValidation () {
       var rule = {
@@ -39,24 +40,12 @@ module.exports = {
           message: 'Doit contenir 15 caractères maximum'
         }
       }
-      var result = approve.value(this.profile.gamerinfo.xboxone.id, rule)
+      // TODO Update with new data structure
+      var result = approve.value('gameConsoles.xboxone', rule)
       return result.errors[0]
     },
     formValidation () {
-      var usernameinfoValidation = true
-      if (this.profile.username) {
-        usernameinfoValidation = !this.usernameValidation
-      }
-      var playstationGamerinfoBValidation = true
-      var xboxGamerinfoValidation = true
-      if (this.profile.gamerinfo.playstationfour.owned && this.playstationIdValidation) {
-        playstationGamerinfoBValidation = false
-      }
-      if (this.profile.gamerinfo.xboxone.owned && this.xboxIdValidation) {
-        xboxGamerinfoValidation = false
-      }
-      console.log(usernameinfoValidation && playstationGamerinfoBValidation && xboxGamerinfoValidation)
-      return usernameinfoValidation && playstationGamerinfoBValidation && xboxGamerinfoValidation
+      // TODO Update Remake all validation
     }
   }
 }
