@@ -23,6 +23,7 @@
           uid: self.uid,
           created: creationDate,
           last_login: creationDate,
+          online: true,
           providerData: self.providerData[0],
           profile: {
             username: ''
@@ -36,7 +37,8 @@
       updateUser () {
         var lastLoginDate = Date.now()
         firebase.database().ref('users/' + this.uid).update({
-          last_login: lastLoginDate
+          last_login: lastLoginDate,
+          online: true
         }).then(function () {
           // TODO Find another way to solve the asynchronous problem of onAuthStateChanged run before data updated
           window.location.reload()
@@ -81,7 +83,6 @@
         })
       }
     }
-
   }
 </script>
 

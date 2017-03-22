@@ -66,13 +66,27 @@ firebase.auth().onAuthStateChanged(function (user) {
       // Set the Object for promise
       var data = {
         profileData,
-        challengeData
+        challengeData,
+        user
       }
       return data
     }).then(function (data) {
       store.commit('updateFifachallenge', data.profileData)
       store.commit('updateChallenge', data.challengeData)
       store.commit('Loaded')
+
+      // Check User Presence
+      var amOnline = firebase.database().ref('.info/connected')
+      var userRef = firebase.database().ref('/presence/' + user.uid)
+
+      amOnline.on('value', function (snapshot) {
+        if (snapshot.val()) {
+          // Check User Online or Offline
+          userRef.onDisconnect().set(false)
+          userRef.set(true)
+          console.log(store.state.challenge.challenge)
+        }
+      })
 
       /* eslint-disable no-new */
       new Vue({
