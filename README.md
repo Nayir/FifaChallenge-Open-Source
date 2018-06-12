@@ -2,6 +2,7 @@
 
 > A Vuejs Open Source Project for Esport FIFA
 > Version 1.1
+> Old version not maintained
 
 ## Build Setup
 
